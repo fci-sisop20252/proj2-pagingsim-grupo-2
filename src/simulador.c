@@ -143,3 +143,65 @@ int ler_configuracao(char *filename){
     fclose(file_config);
     return 1;
 }
+
+//Funções auxiliares
+void tratar_page_fault(Processo *processo, int pagina, int deslocamento, const char *algoritmo){
+    int frame_alocado = -1;
+    int frame_vitima = -1;
+
+    if(memoria_cheia == 0){
+        frame_alocado = encontrar_frame_livre();
+        if(frame_alocado == -1){
+            memoria_cheia = 1;
+        }
+    }
+
+    if(memoria_cheia == 1){
+        if(strcmp(algoritmo, "fifo") == 0){
+            frame_vitima = selecionar_vitima_fifo();
+        } else if(strcmp(algoritmo, "clock") == 0){
+            frame_vitima = selecionar_vitima_clock();
+        }
+
+        frame_alocado = frame_vitima;
+
+        int pid_antigo = MEMORIA_FISICA[frame_vitima].pid;
+        int pagina_antiga = MEMORIA_FISICA[frame_vitima].pagina_id;
+        
+        Processo *processo_antigo = NULL;
+        int i;
+        for(i = 0; i < NUM_PROCESSOS; i++){
+            if(PROCESSOS[i].pid == pid_antigo){
+                processo_antigo = &PROCESSOS[i];
+                break;
+            }
+        }
+
+        if(processo_antigo != NULL){
+            processo_antigo->tabela_paginas[pagina_antiga].frame_id = -1;
+            processo_antigo->tabela_paginas[pagina_antiga].valid_bit = 0;
+        }
+        printf("Acesso: PID %d, Endereco %d (Pagina %d, Deslocamento %d) -> PAGE FAULT -> Memoria cheia. Pagina %d (PID %d) (Frame %d) sera desalocada. -> Pagina %d (PID %d) alocada no Frame %d\n",
+           p->pid, 
+           pagina * TAMANHO_PAGINA + deslocamento, 
+           pagina, 
+           deslocamento, 
+           pag_antiga, 
+           pid_antigo, 
+           frame_alocado, 
+           pagina, 
+           p->pid, 
+           frame_alocado);
+    }
+
+    tempo_global++;
+
+    MEMORIA_FISICA[frame_alocado].pid = processo->pid;
+    MEMORIA_FISICA[frame_alocado].pagina_id = pagina;
+    MEMORIA_FISICA[frame_alocado].livre = 0;
+
+    p->tabela_paginas[pagina].frame_id = frame_alocado;
+    p->tabela_paginas[pagina].valid_bit = 1;
+    p->tabela_paginas[pagina].referenced_bit = 1;
+    p->tabela_paginas[pagina].tempo_chegada_fifo = tempo_global;
+}
