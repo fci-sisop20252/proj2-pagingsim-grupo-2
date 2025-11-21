@@ -1,207 +1,121 @@
-// simulador.c
+#include "simulador.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-// Estrutura para a Entrada da Tabela de Páginas (PTE)
-typedef struct {
-    int frame_id;           // ID do Frame físico (ou -1 se V=0)
-    int valid_bit;          // 1 se na memória (HIT), 0 se PAGE FAULT
-    int referenced_bit;     // R-bit: 1 se acessada, 0 caso contrário
-    int tempo_chegada_fifo; // Para rastrear a ordem de chegada (FIFO)
-} PageTableEntry;
-
-// Estrutura do Frame Físico
-typedef struct {
-    int pid;                // PID do processo que ocupa o frame (-1 se livre)
-    int pagina_id;          // Número da página virtual que está no frame
-    int livre;              // 1 se livre, 0 se ocupado
-} Frame;
-
-// Estrutura do Processo
-typedef struct {
-    int pid;
-    int tamanho_virtual;
-    int num_paginas;
-    PageTableEntry* tabela_paginas; // Tabela de páginas específica do processo
-} Processo;
-
-// Variáveis Globais (definidas após a leitura da config)
+// --- Definição das Variáveis Globais ---
 int NUM_FRAMES;
 int TAMANHO_PAGINA;
 int NUM_PROCESSOS;
 Processo* PROCESSOS;
 Frame* MEMORIA_FISICA;
 
-// Variaveis de controle
-int tempo_global = 0; // Para rastrear o tempo global para FIFO
-int proximo_frame_livre = 0; // Índice do próximo frame livre para alocação
-int memoria_cheia = 0; // Flag para indicar se a memória física está cheia
+int tempo_global = 0;
+int proximo_frame_livre = 0;
+int memoria_cheia = 0;
 
-//Variaveis de Algoritmo
 int ponteiro_clock = 0;
-
-//Variaveis de resumo
 
 int num_page_faults = 0;
 int num_acessos = 0;
+// --- Fim da Definição de Variáveis Globais ---
 
-int main(int argc, char *argv[]){
-    if(argc != 4){
-        fprintf(stderr, "Uso: %s <algoritmo> <arquivo_config> <arquivo_acessos>\n", argv[0]);
-        return 1;
+
+// Função auxiliar para liberar a memória alocada
+void liberar_memoria() {
+    int i;
+    // 1. Libera as tabelas de páginas de cada processo
+    for (i = 0; i < NUM_PROCESSOS; i++) {
+        if (PROCESSOS != NULL && PROCESSOS[i].tabela_paginas != NULL) {
+            free(PROCESSOS[i].tabela_paginas);
+        }
     }
-
-    char *algoritmo = argv[1];
-    char *arq_config = argv[2];
-    char *arq_acessos = argv[3];
-
-
-    //Verifica de o algoritmo é válido
-    if (strcmp(algoritmo, "fifo") != 0 && strcmp(algoritmo, "clock") != 0) {
-        fprintf(stderr, "Erro: Algoritmo deve ser 'fifo' ou 'clock'.\n");
-        return 1;
+    
+    // 2. Libera o array de Processos
+    if (PROCESSOS != NULL) {
+        free(PROCESSOS);
     }
-
-    //Le a configuração, aloca a memoria fisica e os processos
-    //inicializa as tabelas de páginas para cada processo
-    if (!ler_configuracao(arq_config)) {
-        fprintf(stderr, "Erro ao carregar o arquivo de configuração.\n");
-        return 1;
+    
+    // 3. Libera a Memória Física
+    if (MEMORIA_FISICA != NULL) {
+        free(MEMORIA_FISICA);
     }
-
-    // Processa os acessos do arquivo de acessos
-    processar_acessos(algoritmo, arq_acessos);
-
-    //Imprime o resumo dos resultados
-    liberar_memoria();
-
-    //Limpa a memória
-    return 0;
 }
 
+// Implementação da função de leitura de configuração
 int ler_configuracao(char *filename){
     FILE *file_config;
     int i, j;
 
     file_config = fopen(filename, "r");
     if (file_config == NULL){
-        perror("Erro ao abrir o arquivo de configuração");
+        perror("Erro ao abrir o arquivo de configuracao");
         return 0;
     }
 
-    if(fscanf(file_config, "%d", &NUM_FRAMES) != 1 || fscanf(file_config, "%d", &TAMANHO_PAGINA) != 1 || fscanf(file_config, "%d", &NUM_PROCESSOS) != 1){
+    // Leitura dos parâmetros globais
+    if(fscanf(file_config, "%d", &NUM_FRAMES) != 1 || 
+       fscanf(file_config, "%d", &TAMANHO_PAGINA) != 1 || 
+       fscanf(file_config, "%d", &NUM_PROCESSOS) != 1){
         fprintf(stderr, "Erro ao ler os parametros globais.\n");
         fclose(file_config);
         return 0;
     }
 
-    // Aloca a memória física
+    // Aloca a memória física (Frames)
     MEMORIA_FISICA = (Frame*) malloc(NUM_FRAMES * sizeof(Frame));
     if (MEMORIA_FISICA == NULL){
+        fprintf(stderr, "Erro ao alocar memoria fisica.\n");
+        fclose(file_config);
         return 0;
     }
+    // Inicializa frames como livres
+    for (i = 0; i < NUM_FRAMES; i++) {
+        MEMORIA_FISICA[i].pid = -1;
+        MEMORIA_FISICA[i].pagina_id = -1;
+        MEMORIA_FISICA[i].livre = 1;
+    }
 
-    //Aloca o array de processos
+    // Aloca o array de processos
     PROCESSOS = (Processo*) malloc(NUM_PROCESSOS * sizeof(Processo));
     if (PROCESSOS == NULL){
+        fprintf(stderr, "Erro ao alocar array de processos.\n");
         free(MEMORIA_FISICA);
+        fclose(file_config);
         return 0;
     }
 
-    //Le e inicializa os processos e tabelas
-    for(int i = 0; i < NUM_PROCESSOS; i++){
+    // Le e inicializa os processos e tabelas
+    for(i = 0; i < NUM_PROCESSOS; i++){
         int pid, tamanho_virtual;
         if(fscanf(file_config, "%d %d", &pid, &tamanho_virtual) != 2){
             fprintf(stderr, "Erro ao ler os parametros do processo %d.\n", i);
-            free(file_config);
+            liberar_memoria();
+            fclose(file_config);
             return 0;
         }
 
         PROCESSOS[i].pid = pid;
         PROCESSOS[i].tamanho_virtual = tamanho_virtual;
 
-        //Calcula o número de páginas virtuais
+        // Calcula o número de páginas virtuais
         PROCESSOS[i].num_paginas = tamanho_virtual / TAMANHO_PAGINA;
+        
+        // Aloca a tabela de páginas
         PROCESSOS[i].tabela_paginas = (PageTableEntry*) malloc(PROCESSOS[i].num_paginas * sizeof(PageTableEntry));
         if(PROCESSOS[i].tabela_paginas == NULL){
-            fprintf(stderr, "Erro ao alocar a tabela de páginas para o processo %d.\n", pid);
+            fprintf(stderr, "Erro ao alocar a tabela de paginas para o processo %d.\n", pid);
+            liberar_memoria();
             fclose(file_config);
             return 0;
         }
 
-        //Inicializa a tabela de páginas
-        for(int j = 0; j < PROCESSOS[i].num_paginas; j++){
-            PROCESSOS[i].tabela_paginas[j].frame_id = -1; // Indica que a página não está na memória
-            PROCESSOS[i].tabela_paginas[j].valid_bit = 0; // Página não válida
-            PROCESSOS[i].tabela_paginas[j].referenced_bit = 0; // R-bit inicializado como 0
-            PROCESSOS[i].tabela_paginas[j].tempo_chegada_fifo = 0; // Tempo de chegada para FIFO
+        // Inicializa a tabela de páginas
+        for(j = 0; j < PROCESSOS[i].num_paginas; j++){
+            PROCESSOS[i].tabela_paginas[j].frame_id = -1;
+            PROCESSOS[i].tabela_paginas[j].valid_bit = 0;
+            PROCESSOS[i].tabela_paginas[j].referenced_bit = 0;
+            PROCESSOS[i].tabela_paginas[j].tempo_chegada_fifo = 0;
         }
     }
 
     fclose(file_config);
     return 1;
-}
-
-//Funções auxiliares
-void tratar_page_fault(Processo *processo, int pagina, int deslocamento, const char *algoritmo){
-    int frame_alocado = -1;
-    int frame_vitima = -1;
-
-    if(memoria_cheia == 0){
-        frame_alocado = encontrar_frame_livre();
-        if(frame_alocado == -1){
-            memoria_cheia = 1;
-        }
-    }
-
-    if(memoria_cheia == 1){
-        if(strcmp(algoritmo, "fifo") == 0){
-            frame_vitima = selecionar_vitima_fifo();
-        } else if(strcmp(algoritmo, "clock") == 0){
-            frame_vitima = selecionar_vitima_clock();
-        }
-
-        frame_alocado = frame_vitima;
-
-        int pid_antigo = MEMORIA_FISICA[frame_vitima].pid;
-        int pagina_antiga = MEMORIA_FISICA[frame_vitima].pagina_id;
-        
-        Processo *processo_antigo = NULL;
-        int i;
-        for(i = 0; i < NUM_PROCESSOS; i++){
-            if(PROCESSOS[i].pid == pid_antigo){
-                processo_antigo = &PROCESSOS[i];
-                break;
-            }
-        }
-
-        if(processo_antigo != NULL){
-            processo_antigo->tabela_paginas[pagina_antiga].frame_id = -1;
-            processo_antigo->tabela_paginas[pagina_antiga].valid_bit = 0;
-        }
-        printf("Acesso: PID %d, Endereco %d (Pagina %d, Deslocamento %d) -> PAGE FAULT -> Memoria cheia. Pagina %d (PID %d) (Frame %d) sera desalocada. -> Pagina %d (PID %d) alocada no Frame %d\n",
-           p->pid, 
-           pagina * TAMANHO_PAGINA + deslocamento, 
-           pagina, 
-           deslocamento, 
-           pag_antiga, 
-           pid_antigo, 
-           frame_alocado, 
-           pagina, 
-           p->pid, 
-           frame_alocado);
-    }
-
-    tempo_global++;
-
-    MEMORIA_FISICA[frame_alocado].pid = processo->pid;
-    MEMORIA_FISICA[frame_alocado].pagina_id = pagina;
-    MEMORIA_FISICA[frame_alocado].livre = 0;
-
-    p->tabela_paginas[pagina].frame_id = frame_alocado;
-    p->tabela_paginas[pagina].valid_bit = 1;
-    p->tabela_paginas[pagina].referenced_bit = 1;
-    p->tabela_paginas[pagina].tempo_chegada_fifo = tempo_global;
 }
