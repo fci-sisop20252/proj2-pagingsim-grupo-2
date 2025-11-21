@@ -1,0 +1,11 @@
+Acesso: PID 0, Endereço 25 (Página 2, Deslocamento 5) -> PAGE FAULT -> Página 2 (PID 0) alocada no Frame livre 0
+Acesso: PID 1, Endereço 12 (Página 1, Deslocamento 2) -> PAGE FAULT -> Página 1 (PID 1) alocada no Frame livre 1
+Acesso: PID 0, Endereço 28 (Página 2, Deslocamento 8) -> HIT: Página 2 (PID 0) já está no Frame 0
+Acesso: PID 1, Endereço 55 (Página 5, Deslocamento 5) -> PAGE FAULT -> Página 5 (PID 1) alocada no Frame livre 2
+Acesso: PID 0, Endereço 42 (Página 4, Deslocamento 2) -> PAGE FAULT -> Página 4 (PID 0) alocada no Frame livre 3
+Acesso: PID 0, Endereço 25 (Página 2, Deslocamento 5) -> HIT: Página 2 (PID 0) já está no Frame 0
+Acesso: PID 1, Endereço 12 (Página 1, Deslocamento 2) -> HIT: Página 1 (PID 1) já está no Frame 1
+Acesso: PID 0, Endereço 5 (Página 0, Deslocamento 5) -> PAGE FAULT -> Página 0 (PID 0) alocada no Frame livre 4
+--- Simulação Finalizada (Algoritmo: fifo)
+Total de Acessos: 8
+Total de Page Faults: 5

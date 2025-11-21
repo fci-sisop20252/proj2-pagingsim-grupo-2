@@ -1,0 +1,36 @@
+# Binários compilados
+simulador
+a.out
+*.exe
+*.out
+
+# Arquivos objeto
+*.o
+*.obj
+
+# Arquivos temporários
+*.tmp
+*.swp
+*.swo
+*~
+
+# IDEs e editores
+.vscode/
+.idea/
+*.code-workspace
+.vs/
+
+# MacOS
+.DS_Store
+
+# Debug
+core
+vgcore.*
+
+# Saídas de teste
+output*.txt
+test_output.txt
+saida_*.txt
+
+# Logs
+*.log

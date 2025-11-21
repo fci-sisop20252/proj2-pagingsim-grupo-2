@@ -1,0 +1,13 @@
+Acesso: PID 0, Endereço 5 (Página 0, Deslocamento 5) -> PAGE FAULT -> Página 0 (PID 0) alocada no Frame livre 0
+Acesso: PID 1, Endereço 8 (Página 0, Deslocamento 8) -> PAGE FAULT -> Página 0 (PID 1) alocada no Frame livre 1
+Acesso: PID 2, Endereço 12 (Página 1, Deslocamento 2) -> PAGE FAULT -> Página 1 (PID 2) alocada no Frame livre 2
+Acesso: PID 0, Endereço 15 (Página 1, Deslocamento 5) -> PAGE FAULT -> Página 1 (PID 0) alocada no Frame livre 3
+Acesso: PID 1, Endereço 20 (Página 2, Deslocamento 0) -> PAGE FAULT -> Memória cheia. Página 0 (PID 0) (Frame 0) será desalocada. -> Página 2 (PID 1) alocada no Frame 0
+Acesso: PID 2, Endereço 5 (Página 0, Deslocamento 5) -> PAGE FAULT -> Memória cheia. Página 0 (PID 1) (Frame 1) será desalocada. -> Página 0 (PID 2) alocada no Frame 1
+Acesso: PID 0, Endereço 25 (Página 2, Deslocamento 5) -> PAGE FAULT -> Memória cheia. Página 1 (PID 2) (Frame 2) será desalocada. -> Página 2 (PID 0) alocada no Frame 2
+Acesso: PID 1, Endereço 10 (Página 1, Deslocamento 0) -> PAGE FAULT -> Memória cheia. Página 1 (PID 0) (Frame 3) será desalocada. -> Página 1 (PID 1) alocada no Frame 3
+Acesso: PID 2, Endereço 18 (Página 1, Deslocamento 8) -> PAGE FAULT -> Memória cheia. Página 2 (PID 1) (Frame 0) será desalocada. -> Página 1 (PID 2) alocada no Frame 0
+Acesso: PID 0, Endereço 5 (Página 0, Deslocamento 5) -> PAGE FAULT -> Memória cheia. Página 0 (PID 2) (Frame 1) será desalocada. -> Página 0 (PID 0) alocada no Frame 1
+--- Simulação Finalizada (Algoritmo: fifo)
+Total de Acessos: 10
+Total de Page Faults: 10

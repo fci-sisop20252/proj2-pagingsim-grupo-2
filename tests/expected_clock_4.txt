@@ -1,0 +1,103 @@
+Acesso: PID 0, Endereço 3 (Página 0, Deslocamento 3) -> PAGE FAULT -> Página 0 (PID 0) alocada no Frame livre 0
+Acesso: PID 2, Endereço 15 (Página 0, Deslocamento 15) -> PAGE FAULT -> Página 0 (PID 2) alocada no Frame livre 1
+Acesso: PID 1, Endereço 17 (Página 0, Deslocamento 17) -> PAGE FAULT -> Página 0 (PID 1) alocada no Frame livre 2
+Acesso: PID 0, Endereço 69 (Página 3, Deslocamento 9) -> PAGE FAULT -> Página 3 (PID 0) alocada no Frame livre 3
+Acesso: PID 0, Endereço 75 (Página 3, Deslocamento 15) -> HIT: Página 3 (PID 0) já está no Frame 3
+Acesso: PID 3, Endereço 4 (Página 0, Deslocamento 4) -> PAGE FAULT -> Página 0 (PID 3) alocada no Frame livre 4
+Acesso: PID 0, Endereço 11 (Página 0, Deslocamento 11) -> HIT: Página 0 (PID 0) já está no Frame 0
+Acesso: PID 1, Endereço 29 (Página 1, Deslocamento 9) -> PAGE FAULT -> Página 1 (PID 1) alocada no Frame livre 5
+Acesso: PID 0, Endereço 71 (Página 3, Deslocamento 11) -> HIT: Página 3 (PID 0) já está no Frame 3
+Acesso: PID 1, Endereço 91 (Página 4, Deslocamento 11) -> PAGE FAULT -> Página 4 (PID 1) alocada no Frame livre 6
+Acesso: PID 3, Endereço 28 (Página 1, Deslocamento 8) -> PAGE FAULT -> Página 1 (PID 3) alocada no Frame livre 7
+Acesso: PID 3, Endereço 75 (Página 3, Deslocamento 15) -> PAGE FAULT -> Página 3 (PID 3) alocada no Frame livre 8
+Acesso: PID 2, Endereço 51 (Página 2, Deslocamento 11) -> PAGE FAULT -> Página 2 (PID 2) alocada no Frame livre 9
+Acesso: PID 0, Endereço 20 (Página 1, Deslocamento 0) -> PAGE FAULT -> Memória cheia. Página 0 (PID 0) (Frame 0) será desalocada. -> Página 1 (PID 0) alocada no Frame 0
+Acesso: PID 3, Endereço 43 (Página 2, Deslocamento 3) -> PAGE FAULT -> Memória cheia. Página 0 (PID 2) (Frame 1) será desalocada. -> Página 2 (PID 3) alocada no Frame 1
+Acesso: PID 2, Endereço 9 (Página 0, Deslocamento 9) -> PAGE FAULT -> Memória cheia. Página 0 (PID 1) (Frame 2) será desalocada. -> Página 0 (PID 2) alocada no Frame 2
+Acesso: PID 1, Endereço 97 (Página 4, Deslocamento 17) -> HIT: Página 4 (PID 1) já está no Frame 6
+Acesso: PID 2, Endereço 6 (Página 0, Deslocamento 6) -> HIT: Página 0 (PID 2) já está no Frame 2
+Acesso: PID 0, Endereço 48 (Página 2, Deslocamento 8) -> PAGE FAULT -> Memória cheia. Página 3 (PID 0) (Frame 3) será desalocada. -> Página 2 (PID 0) alocada no Frame 3
+Acesso: PID 0, Endereço 45 (Página 2, Deslocamento 5) -> HIT: Página 2 (PID 0) já está no Frame 3
+Acesso: PID 2, Endereço 48 (Página 2, Deslocamento 8) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 2, Endereço 48 (Página 2, Deslocamento 8) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 0, Endereço 77 (Página 3, Deslocamento 17) -> PAGE FAULT -> Memória cheia. Página 0 (PID 3) (Frame 4) será desalocada. -> Página 3 (PID 0) alocada no Frame 4
+Acesso: PID 0, Endereço 62 (Página 3, Deslocamento 2) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 2, Endereço 48 (Página 2, Deslocamento 8) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 0, Endereço 77 (Página 3, Deslocamento 17) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 2, Endereço 48 (Página 2, Deslocamento 8) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 2, Endereço 59 (Página 2, Deslocamento 19) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 0, Endereço 62 (Página 3, Deslocamento 2) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 2, Endereço 59 (Página 2, Deslocamento 19) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 0, Endereço 62 (Página 3, Deslocamento 2) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 0, Endereço 77 (Página 3, Deslocamento 17) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 0, Endereço 62 (Página 3, Deslocamento 2) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 0, Endereço 62 (Página 3, Deslocamento 2) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 0, Endereço 77 (Página 3, Deslocamento 17) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 0, Endereço 62 (Página 3, Deslocamento 2) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 2, Endereço 48 (Página 2, Deslocamento 8) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 2, Endereço 46 (Página 2, Deslocamento 6) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 0, Endereço 77 (Página 3, Deslocamento 17) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 2, Endereço 46 (Página 2, Deslocamento 6) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 0, Endereço 77 (Página 3, Deslocamento 17) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 0, Endereço 77 (Página 3, Deslocamento 17) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 2, Endereço 59 (Página 2, Deslocamento 19) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 2, Endereço 59 (Página 2, Deslocamento 19) -> HIT: Página 2 (PID 2) já está no Frame 9
+Acesso: PID 0, Endereço 62 (Página 3, Deslocamento 2) -> HIT: Página 3 (PID 0) já está no Frame 4
+Acesso: PID 3, Endereço 92 (Página 4, Deslocamento 12) -> PAGE FAULT -> Memória cheia. Página 1 (PID 1) (Frame 5) será desalocada. -> Página 4 (PID 3) alocada no Frame 5
+Acesso: PID 3, Endereço 79 (Página 3, Deslocamento 19) -> HIT: Página 3 (PID 3) já está no Frame 8
+Acesso: PID 1, Endereço 41 (Página 2, Deslocamento 1) -> PAGE FAULT -> Memória cheia. Página 1 (PID 3) (Frame 7) será desalocada. -> Página 2 (PID 1) alocada no Frame 7
+Acesso: PID 3, Endereço 1 (Página 0, Deslocamento 1) -> PAGE FAULT -> Memória cheia. Página 4 (PID 1) (Frame 6) será desalocada. -> Página 0 (PID 3) alocada no Frame 6
+Acesso: PID 0, Endereço 25 (Página 1, Deslocamento 5) -> HIT: Página 1 (PID 0) já está no Frame 0
+Acesso: PID 1, Endereço 10 (Página 0, Deslocamento 10) -> PAGE FAULT -> Memória cheia. Página 3 (PID 3) (Frame 8) será desalocada. -> Página 0 (PID 1) alocada no Frame 8
+Acesso: PID 3, Endereço 1 (Página 0, Deslocamento 1) -> HIT: Página 0 (PID 3) já está no Frame 6
+Acesso: PID 3, Endereço 88 (Página 4, Deslocamento 8) -> HIT: Página 4 (PID 3) já está no Frame 5
+Acesso: PID 3, Endereço 92 (Página 4, Deslocamento 12) -> HIT: Página 4 (PID 3) já está no Frame 5
+Acesso: PID 3, Endereço 82 (Página 4, Deslocamento 2) -> HIT: Página 4 (PID 3) já está no Frame 5
+Acesso: PID 1, Endereço 72 (Página 3, Deslocamento 12) -> PAGE FAULT -> Memória cheia. Página 2 (PID 2) (Frame 9) será desalocada. -> Página 3 (PID 1) alocada no Frame 9
+Acesso: PID 3, Endereço 82 (Página 4, Deslocamento 2) -> HIT: Página 4 (PID 3) já está no Frame 5
+Acesso: PID 3, Endereço 1 (Página 0, Deslocamento 1) -> HIT: Página 0 (PID 3) já está no Frame 6
+Acesso: PID 3, Endereço 28 (Página 1, Deslocamento 8) -> PAGE FAULT -> Memória cheia. Página 2 (PID 3) (Frame 1) será desalocada. -> Página 1 (PID 3) alocada no Frame 1
+Acesso: PID 1, Endereço 10 (Página 0, Deslocamento 10) -> HIT: Página 0 (PID 1) já está no Frame 8
+Acesso: PID 1, Endereço 72 (Página 3, Deslocamento 12) -> HIT: Página 3 (PID 1) já está no Frame 9
+Acesso: PID 1, Endereço 37 (Página 1, Deslocamento 17) -> PAGE FAULT -> Memória cheia. Página 0 (PID 2) (Frame 2) será desalocada. -> Página 1 (PID 1) alocada no Frame 2
+Acesso: PID 3, Endereço 42 (Página 2, Deslocamento 2) -> PAGE FAULT -> Memória cheia. Página 2 (PID 0) (Frame 3) será desalocada. -> Página 2 (PID 3) alocada no Frame 3
+Acesso: PID 2, Endereço 58 (Página 2, Deslocamento 18) -> PAGE FAULT -> Memória cheia. Página 3 (PID 0) (Frame 4) será desalocada. -> Página 2 (PID 2) alocada no Frame 4
+Acesso: PID 1, Endereço 41 (Página 2, Deslocamento 1) -> HIT: Página 2 (PID 1) já está no Frame 7
+Acesso: PID 0, Endereço 25 (Página 1, Deslocamento 5) -> HIT: Página 1 (PID 0) já está no Frame 0
+Acesso: PID 3, Endereço 88 (Página 4, Deslocamento 8) -> HIT: Página 4 (PID 3) já está no Frame 5
+Acesso: PID 0, Endereço 25 (Página 1, Deslocamento 5) -> HIT: Página 1 (PID 0) já está no Frame 0
+Acesso: PID 1, Endereço 72 (Página 3, Deslocamento 12) -> HIT: Página 3 (PID 1) já está no Frame 9
+Acesso: PID 3, Endereço 92 (Página 4, Deslocamento 12) -> HIT: Página 4 (PID 3) já está no Frame 5
+Acesso: PID 1, Endereço 64 (Página 3, Deslocamento 4) -> HIT: Página 3 (PID 1) já está no Frame 9
+Acesso: PID 0, Endereço 38 (Página 1, Deslocamento 18) -> HIT: Página 1 (PID 0) já está no Frame 0
+Acesso: PID 1, Endereço 19 (Página 0, Deslocamento 19) -> HIT: Página 0 (PID 1) já está no Frame 8
+Acesso: PID 2, Endereço 48 (Página 2, Deslocamento 8) -> HIT: Página 2 (PID 2) já está no Frame 4
+Acesso: PID 1, Endereço 69 (Página 3, Deslocamento 9) -> HIT: Página 3 (PID 1) já está no Frame 9
+Acesso: PID 0, Endereço 76 (Página 3, Deslocamento 16) -> PAGE FAULT -> Memória cheia. Página 4 (PID 3) (Frame 5) será desalocada. -> Página 3 (PID 0) alocada no Frame 5
+Acesso: PID 2, Endereço 31 (Página 1, Deslocamento 11) -> PAGE FAULT -> Memória cheia. Página 0 (PID 3) (Frame 6) será desalocada. -> Página 1 (PID 2) alocada no Frame 6
+Acesso: PID 0, Endereço 14 (Página 0, Deslocamento 14) -> PAGE FAULT -> Memória cheia. Página 2 (PID 1) (Frame 7) será desalocada. -> Página 0 (PID 0) alocada no Frame 7
+Acesso: PID 2, Endereço 56 (Página 2, Deslocamento 16) -> HIT: Página 2 (PID 2) já está no Frame 4
+Acesso: PID 2, Endereço 15 (Página 0, Deslocamento 15) -> PAGE FAULT -> Memória cheia. Página 0 (PID 1) (Frame 8) será desalocada. -> Página 0 (PID 2) alocada no Frame 8
+Acesso: PID 0, Endereço 30 (Página 1, Deslocamento 10) -> HIT: Página 1 (PID 0) já está no Frame 0
+Acesso: PID 0, Endereço 10 (Página 0, Deslocamento 10) -> HIT: Página 0 (PID 0) já está no Frame 7
+Acesso: PID 3, Endereço 8 (Página 0, Deslocamento 8) -> PAGE FAULT -> Memória cheia. Página 3 (PID 1) (Frame 9) será desalocada. -> Página 0 (PID 3) alocada no Frame 9
+Acesso: PID 1, Endereço 16 (Página 0, Deslocamento 16) -> PAGE FAULT -> Memória cheia. Página 1 (PID 3) (Frame 1) será desalocada. -> Página 0 (PID 1) alocada no Frame 1
+Acesso: PID 3, Endereço 70 (Página 3, Deslocamento 10) -> PAGE FAULT -> Memória cheia. Página 1 (PID 1) (Frame 2) será desalocada. -> Página 3 (PID 3) alocada no Frame 2
+Acesso: PID 1, Endereço 33 (Página 1, Deslocamento 13) -> PAGE FAULT -> Memória cheia. Página 2 (PID 3) (Frame 3) será desalocada. -> Página 1 (PID 1) alocada no Frame 3
+Acesso: PID 3, Endereço 27 (Página 1, Deslocamento 7) -> PAGE FAULT -> Memória cheia. Página 1 (PID 0) (Frame 0) será desalocada. -> Página 1 (PID 3) alocada no Frame 0
+Acesso: PID 1, Endereço 91 (Página 4, Deslocamento 11) -> PAGE FAULT -> Memória cheia. Página 2 (PID 2) (Frame 4) será desalocada. -> Página 4 (PID 1) alocada no Frame 4
+Acesso: PID 2, Endereço 25 (Página 1, Deslocamento 5) -> HIT: Página 1 (PID 2) já está no Frame 6
+Acesso: PID 2, Endereço 28 (Página 1, Deslocamento 8) -> HIT: Página 1 (PID 2) já está no Frame 6
+Acesso: PID 3, Endereço 15 (Página 0, Deslocamento 15) -> HIT: Página 0 (PID 3) já está no Frame 9
+Acesso: PID 1, Endereço 28 (Página 1, Deslocamento 8) -> HIT: Página 1 (PID 1) já está no Frame 3
+Acesso: PID 0, Endereço 43 (Página 2, Deslocamento 3) -> PAGE FAULT -> Memória cheia. Página 3 (PID 0) (Frame 5) será desalocada. -> Página 2 (PID 0) alocada no Frame 5
+Acesso: PID 0, Endereço 75 (Página 3, Deslocamento 15) -> PAGE FAULT -> Memória cheia. Página 0 (PID 0) (Frame 7) será desalocada. -> Página 3 (PID 0) alocada no Frame 7
+Acesso: PID 1, Endereço 75 (Página 3, Deslocamento 15) -> PAGE FAULT -> Memória cheia. Página 0 (PID 2) (Frame 8) será desalocada. -> Página 3 (PID 1) alocada no Frame 8
+Acesso: PID 1, Endereço 0 (Página 0, Deslocamento 0) -> HIT: Página 0 (PID 1) já está no Frame 1
+Acesso: PID 0, Endereço 7 (Página 0, Deslocamento 7) -> PAGE FAULT -> Memória cheia. Página 3 (PID 3) (Frame 2) será desalocada. -> Página 0 (PID 0) alocada no Frame 2
+Acesso: PID 1, Endereço 8 (Página 0, Deslocamento 8) -> HIT: Página 0 (PID 1) já está no Frame 1
+Acesso: PID 0, Endereço 42 (Página 2, Deslocamento 2) -> HIT: Página 2 (PID 0) já está no Frame 5
+Acesso: PID 0, Endereço 65 (Página 3, Deslocamento 5) -> HIT: Página 3 (PID 0) já está no Frame 7
+--- Simulação Finalizada (Algoritmo: clock)
+Total de Acessos: 100
+Total de Page Faults: 38
