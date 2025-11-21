@@ -119,3 +119,38 @@ int ler_configuracao(char *filename){
     fclose(file_config);
     return 1;
 }
+
+void tratar_hit(Processo *processo, int pagina, int frame_id, int deslocamento){
+    p->tabela_paginas[pagina].referenced_bit = 1;
+    printf("Acesso: PID %d, Endereco %d (Pagina %d, Deslocamento %d) -> HIT: Pagina %d (PID %d) ja esta no Frame %d\n",
+           p->pid, 
+           pagina * TAMANHO_PAGINA + deslocamento, 
+           pagina, 
+           deslocamento, 
+           pagina, 
+           p->pid, 
+           frame_id);
+}
+
+void encontrar_frame_livre(){
+    int i;
+    for (i = 0; i < NUM_FRAMES; i++){
+        if (MEMORIA_FISICA[i].livre == 1){
+            proximo_frame_livre = (i + 1) % NUM_FRAMES;
+            return i;
+        }
+    }
+
+    for(int i = 0; i < proximo_frame_livre; i++){
+        if (MEMORIA_FISICA[i].livre == 1){
+            proximo_frame_livre = (i + 1) % NUM_FRAMES;
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+
+//FALTA FAZER: selecionar_vitima_fifo, selecionar_vitima_clock
+//tratar_page_fault, processar_acessos, imprimir_resumo.
