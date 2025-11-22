@@ -40,7 +40,7 @@ void liberar_memoria() {
 }
 
 // Implementação da função de leitura de configuração
-int ler_configuracao(char *filename){
+int ler_configuracao(const char *filename){
     FILE *file_config;
     int i, j;
 
