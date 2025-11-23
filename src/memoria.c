@@ -1,5 +1,5 @@
 // --- PROTÓTIPOS (Coloque antes do main) ---
-#include "simulador.c"
+#include "simulador.h"
 
 void processar_acessos(char *algoritmo, char *filename);
 int executar_fifo();
@@ -124,11 +124,6 @@ void processar_acessos(char *algoritmo, char *filename) {
         }
     }
     
-    // Resumo final exigido
-    printf("\n--- Simulação Finalizada (Algoritmo: %s)\n", algoritmo);
-    printf("Total de Acessos: %d\n", num_acessos);
-    printf("Total de Page Faults: %d\n", num_page_faults);
-    
     fclose(file);
 }
 
@@ -175,15 +170,5 @@ int executar_clock() {
             ponteiro_clock = (ponteiro_clock + 1) % NUM_FRAMES;
             return vitima;
         }
-    }
-}
-
-void liberar_memoria() {
-    if (MEMORIA_FISICA) free(MEMORIA_FISICA);
-    if (PROCESSOS) {
-        for (int i = 0; i < NUM_PROCESSOS; i++) {
-            if (PROCESSOS[i].tabela_paginas) free(PROCESSOS[i].tabela_paginas);
-        }
-        free(PROCESSOS);
     }
 }

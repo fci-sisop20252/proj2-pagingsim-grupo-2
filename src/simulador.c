@@ -121,18 +121,18 @@ int ler_configuracao(const char *filename){
 }
 
 void tratar_hit(Processo *processo, int pagina, int frame_id, int deslocamento){
-    p->tabela_paginas[pagina].referenced_bit = 1;
+    processo->tabela_paginas[pagina].referenced_bit = 1;
     printf("Acesso: PID %d, Endereco %d (Pagina %d, Deslocamento %d) -> HIT: Pagina %d (PID %d) ja esta no Frame %d\n",
-           p->pid, 
+           processo->pid, 
            pagina * TAMANHO_PAGINA + deslocamento, 
            pagina, 
            deslocamento, 
            pagina, 
-           p->pid, 
+           processo->pid, 
            frame_id);
 }
 
-void encontrar_frame_livre(){
+int encontrar_frame_livre(){
     int i;
     for (i = 0; i < NUM_FRAMES; i++){
         if (MEMORIA_FISICA[i].livre == 1){
@@ -151,6 +151,10 @@ void encontrar_frame_livre(){
     return -1;
 }
 
-
+void imprimir_resumo (const char *algoritmo){
+    printf("\n Simulação finalizada (Algoritmo: %s)\n", algoritmo);
+    printf("Total de acessos: %d\n", num_acessos);
+    printf("Total de page faults: %d\n", num_page_faults);
+}
 //FALTA FAZER: selecionar_vitima_fifo, selecionar_vitima_clock
 //tratar_page_fault, processar_acessos, imprimir_resumo.

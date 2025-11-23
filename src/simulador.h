@@ -52,12 +52,12 @@ extern int num_acessos;
 // --- Protótipos das Funções ---
 
 // Funções de Inicialização e Limpeza
-int ler_configuracao(char *filename);
+int ler_configuracao(const char *filename);
 void liberar_memoria();
 void imprimir_resumo(const char *algoritmo);
 
 // Função Principal de Simulação
-void processar_acessos(const char *algoritmo, char *filename);
+void processar_acessos(char *algoritmo, char *filename);
 void tratar_hit(Processo *p, int pagina, int frame_id, int deslocamento);
 
 // Funções de Tratamento de Page Fault
