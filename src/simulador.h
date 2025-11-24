@@ -24,12 +24,11 @@ typedef struct {
     int pid;
     int tamanho_virtual;
     int num_paginas;
-    PageTableEntry* tabela_paginas; // Tabela de páginas específica do processo
+    PageTableEntry* tabela_paginas; 
 } Processo;
 
 
-// --- Variáveis Globais (Declaração 'extern') ---
-// Estas variáveis são definidas em simulador.c e usadas em main.c
+// --- Variáveis Globais ---
 extern int NUM_FRAMES;
 extern int TAMANHO_PAGINA;
 extern int NUM_PROCESSOS;
@@ -52,16 +51,12 @@ extern int num_acessos;
 // --- Protótipos das Funções ---
 
 // Funções de Inicialização e Limpeza
-int ler_configuracao(const char *filename);
 void liberar_memoria();
 void imprimir_resumo(const char *algoritmo);
 
 // Função Principal de Simulação
 void processar_acessos(char *algoritmo, char *filename);
 void tratar_hit(Processo *p, int pagina, int frame_id, int deslocamento);
-
-// Funções de Tratamento de Page Fault
-void tratar_page_fault(Processo *processo, int pagina, int deslocamento, const char *algoritmo);
 
 // Funções de Alocação e Substituição
 int encontrar_frame_livre();
