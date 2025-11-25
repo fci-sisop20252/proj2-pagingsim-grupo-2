@@ -184,19 +184,31 @@ Preencha a tabela abaixo com os resultados de pelo menos 3 testes diferentes:
 Com base nos resultados acima, responda:
 
 1. **Qual algoritmo teve melhor desempenho (menos page faults)?**
+O teste que fizemos a cima o desempenho foi igual para ambos
 
 2. **Por que você acha que isso aconteceu?** Considere:
    - Como cada algoritmo escolhe a vítima
+   FIFO -> escolhe a página presente na memória a mais tempo
+   CLOCK -> usa o ponteiro circular para percorrer os frames e o R-bit para decidir se a próxima página merece uma segunda chance
+
    - O papel do R-bit no Clock
+   É o mecanismo de filtragem do CLOCK, quando a página é acessada o R-bit é setado para 1. A segunda chance ocorre quando temos um page fault e o ponteiro encontra R-bit = 1, não a substitui ao invés disso o R-bit é zerado, a página só é escolhida como vítima se o ponteiro encontrar com R-bit = 0
+
    - O padrão de acesso dos testes
+   No teste feito acima o padrão acesso é provável que tenha sido uma swequencia pura,mostrando que ocorrem acessos nunca repetidos
 
 3. **Em que situações Clock é melhor que FIFO?**
+O CLOCK é mlhor que o FIFO quando é necessário o uso de localidade temporal. O CLOCK impede a substituição de páginas que estão em uso frequente, o CLOCK usa o R-bit para dar uma segunda chance a essas páginas
    - Dê exemplos de padrões de acesso onde Clock se beneficia
+   A, B, C, D, A, E (Memória de 4 frames)
 
 4. **Houve casos onde FIFO e Clock tiveram o mesmo resultado?**
+Sim nos quatro testes fietos
    - Por que isso aconteceu?
+   Neste caso provavelmente acontece pois o ponteiro do CLOCK aponta para a mesma vítima do FIFO
 
 5. **Qual algoritmo você escolheria para um sistema real e por quê?**
+Escolheria o CLOCK, pois mesmo que no exemplo de teste os resultados tenham sidos iguais na maioria dos casos o CLOCK terá um funcionamento superior ao FIFO
 
 ---
 
@@ -207,17 +219,29 @@ Com base nos resultados acima, responda:
 Descreva o maior desafio técnico que seu grupo enfrentou durante a implementação:
 
 - Qual foi o problema?
+Fazer a implementação do header de forma que as structs estivessem corretamentes correlacionadas com as funções
+
 - Como identificaram o problema?
+Fazendo a análise das variáveis e de como elas estavam funcionando e se comumicando
+
 - Como resolveram?
+Substituindo as variáveis necessárias pelas corretas e fazer as relações necessárias
+
 - O que aprenderam com isso?
+Aprendemos que uma das partes cruciais da construção de uma paginação mora na maneira com a qual é feita a implementação de determinados dados
 
 ### 4.2 Principal Aprendizado
 
 Descreva o principal aprendizado sobre gerenciamento de memória que vocês tiveram com este projeto:
 
 - O que vocês não entendiam bem antes e agora entendem?
+O funcionamento e conceito de paginação, a maneira com a qual a tabela de páginas conversa com o endereço do frame e o resto das informações
+
 - Como este projeto mudou sua compreensão de memória virtual?
+Este projeto nos ajudou a ter um melhor entendimento sobre alguns aspectos essenciais de memória virtual, como a forma com a qual os endereços são lidos pelo sistema e como isso afeta o funcionamento do sistema como um todo
+
 - Que conceito das aulas ficou mais claro após a implementação?
+O conceito de método CLOCK de substituição, alguns aspectos particulares dele tornavam complicado o entendimento de como ele poderia ser implementado, mas a fazendo o simulador foi possível entender perfritamente sua implementação
 
 ---
 
