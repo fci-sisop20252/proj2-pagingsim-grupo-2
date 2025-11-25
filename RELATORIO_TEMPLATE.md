@@ -19,7 +19,7 @@
 Descreva EXATAMENTE como compilar seu projeto. Inclua todos os comandos necessários.
 
 primeiro passo: gcc -o simulador main.c simulador.c memoria.c parser.c
-segundo passo: ./src/simulador clock tests/config_X.txt tests/acessos_X.txt 
+segundo passo: ./simulador clock tests/config_X.txt tests/acessos_X.txt 
 Obs: o X representa o número desejado para testar os códigos, então apenas substitua pelo valor desejado
 
 ### 1.2 Execução
@@ -247,18 +247,18 @@ O conceito de método CLOCK de substituição, alguns aspectos particulares dele
 
 ## 5. Vídeo de Demonstração
 
-**Link do vídeo:** [Insira aqui o link para YouTube, Google Drive, etc.]
+**Link do vídeo:** https://youtu.be/5N1WQHfsUpk
 
 ### Conteúdo do vídeo:
 
 Confirme que o vídeo contém:
 
-- [ ] Demonstração da compilação do projeto
-- [ ] Execução do simulador com algoritmo FIFO
-- [ ] Execução do simulador com algoritmo Clock
-- [ ] Explicação da saída produzida
-- [ ] Comparação dos resultados FIFO vs Clock
-- [ ] Breve explicação de uma decisão de design importante
+- [x] Demonstração da compilação do projeto
+- [x] Execução do simulador com algoritmo FIFO
+- [x] Execução do simulador com algoritmo Clock
+- [x] Explicação da saída produzida
+- [x] Comparação dos resultados FIFO vs Clock
+- [x] Breve explicação de uma decisão de design importante
 
 ---
 
@@ -266,20 +266,22 @@ Confirme que o vídeo contém:
 
 Antes de submeter, verifique:
 
-- [ ] Código compila sem erros conforme instruções da seção 1.1
-- [ ] Simulador funciona corretamente com FIFO
-- [ ] Simulador funciona corretamente com Clock
-- [ ] Formato de saída segue EXATAMENTE a especificação do ENUNCIADO.md
-- [ ] Testamos com os casos fornecidos em tests/
-- [ ] Todas as seções deste relatório foram preenchidas
-- [ ] Análise comparativa foi realizada com dados reais
-- [ ] Vídeo de demonstração foi gravado e link está funcionando
-- [ ] Todos os integrantes participaram e concordam com a submissão
+- [x] Código compila sem erros conforme instruções da seção 1.1
+- [x] Simulador funciona corretamente com FIFO
+- [x] Simulador funciona corretamente com Clock
+- [x] Formato de saída segue EXATAMENTE a especificação do ENUNCIADO.md
+- [x] Testamos com os casos fornecidos em tests/
+- [x] Todas as seções deste relatório foram preenchidas
+- [x] Análise comparativa foi realizada com dados reais
+- [x] Vídeo de demonstração foi gravado e link está funcionando
+- [x] Todos os integrantes participaram e concordam com a submissão
 
 ---
 ## Referências
 Liste aqui quaisquer referências que utilizaram para auxiliar na implementação (livros, artigos, sites, **links para conversas com IAs.**)
-
+Extern em C: http://mtm.ufsc.br/~azeredo/cursoC/aulas/ca20.html
+Paginação em C: https://www.youtube.com/watch?v=tSQpV9sNgKA
+Operadores e funções: https://www.ibm.com/docs/pt-br/uax?topic=kql-supported-operators-functions
 
 ---
 
