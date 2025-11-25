@@ -287,6 +287,6 @@ Operadores e funções: https://www.ibm.com/docs/pt-br/uax?topic=kql-supported-o
 
 ## Comentários Finais
 
-Use este espaço para quaisquer observações adicionais que julguem relevantes (opcional).
+Pós video, removi um "/n" na linha 28 do arquivo simulador.c que era uma quebra de linha não necessária de acordo com Enunciado.md
 
 ---
