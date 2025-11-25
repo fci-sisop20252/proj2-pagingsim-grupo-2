@@ -27,7 +27,7 @@ void liberar_memoria() {
 }
 
 void imprimir_resumo (const char *algoritmo){
-    printf("\n--- Simulação Finalizada (Algoritmo: %s)\n", algoritmo);
+    printf("--- Simulação Finalizada (Algoritmo: %s)\n", algoritmo);
     printf("Total de Acessos: %d\n", num_acessos);
     printf("Total de Page Faults: %d\n", num_page_faults);
 }
